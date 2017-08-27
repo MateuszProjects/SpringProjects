@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="mylogger" 
+	class="info.spring.implementation.LoggerImpl">
+		<property name="name" value="Mojlogger"></property>
+		<property name="version" value="1"></property>
+	</bean>
+	
+	<bean id="repozytoriumUzytkownikow" 
+	class="info.spring.implementation.UserRepositoryImpl">
+	<constructor-arg index="0" ref="mylogger" ></constructor-arg>	
+	<constructor-arg index="1" value="http://localhost:8080/mavenProject"></constructor-arg>
+	</bean>
+</beans>
