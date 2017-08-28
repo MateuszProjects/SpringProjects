@@ -11,8 +11,8 @@
 	
 	<bean id="repozytoriumUzytkownikow" 
 	class="info.spring.implementation.UserRepositoryImpl">
-		<property name="logger" ref="mylogger">
-		</property>
+		<property name="logger" ref="mylogger"></property>
+		<constructor-arg index="0" value="dane"></constructor-arg>
 	</bean>
 
 </beans>
