@@ -1,6 +1,10 @@
 package info.spring.main;
 
 import java.util.Locale;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -9,11 +13,19 @@ import java.util.GregorianCalendar;
 public class MainSpringMetodyFabrykujace {
 
 	public static void main(String[] args) {
-		Locale locale = Locale.getDefault();
+/*		Locale locale = Locale.getDefault();
 		Calendar calendar = GregorianCalendar.getInstance(locale);
 		
-		DateFormat formater = SimpleDateFormat.getInstance();
+		DateFormat formatter = SimpleDateFormat.getInstance();
 		
-		System.out.println(formater.format(calendar.getTime()));
+		System.out.println(formatter.format(calendar.getTime()));
+*/
+		
+		ApplicationContext context = new ClassPathXmlApplicationContext("konfiguracja.xml");
+		Calendar calendar = context.getBean("calendar", Calendar.class);
+		DateFormat formatter = (DateFormat) context.getBean("formatter");
+		
+		System.out.println(formatter.format(calendar.getTime()));
+		
 	}
 }
