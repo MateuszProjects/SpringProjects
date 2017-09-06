@@ -3,26 +3,32 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="mylogger" 
-	class="info.spring.implementation.LoggerImpl">
+	<bean id="mylogger" class="info.spring.implementation.LoggerImpl">
 		<property name="name" value="Mojlogger"></property>
 		<property name="version" value="1"></property>
 	</bean>
-	
-	<bean id="repozytoriumUzytkownikow" 
-	class="info.spring.implementation.UserRepositoryImpl">
+
+	<bean id="repozytoriumUzytkownikow" class="info.spring.implementation.UserRepositoryImpl">
 		<property name="logger" ref="mylogger"></property>
 		<constructor-arg index="0" value="dane"></constructor-arg>
 	</bean>
-	
+
 	<!-- method factory -->
-	
+
 	<bean id="locale" class="java.util.Locale" factory-method="getDefault" />
-	
-	<bean id="calendar" class="java.util.GregorianCalendar" factory-method="getInstance">
+
+	<bean id="calendar" class="java.util.GregorianCalendar"
+		factory-method="getInstance">
 		<constructor-arg ref="locale"></constructor-arg>
 	</bean>
+
+	<bean id="formatter" class="java.text.SimpleDateFormat"
+		factory-method="getInstance" />
+
+	<!-- My own Factory Method -->
 	
-	<bean id="formatter" class="java.text.SimpleDateFormat" factory-method="getInstance" />
- 
+	<bean id="someUser" class="info.spring.factory_method.User" factory-method="getInstance">
+		<constructor-arg value="Jan"></constructor-arg>
+		<constructor-arg value="22"></constructor-arg>
+	</bean>
 </beans>
