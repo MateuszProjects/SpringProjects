@@ -31,4 +31,12 @@
 		<constructor-arg value="Jan"></constructor-arg>
 		<constructor-arg value="22"></constructor-arg>
 	</bean>
+	
+	<!-- My own Instance Factory Method  -->
+	<bean id="instanceFactory" class="info.spring.user.UserCreate"/>
+	
+	<bean id="ownUser" factory-bean="instanceFactory" factory-method="createUser">
+	<constructor-arg value="JAN"></constructor-arg>
+	</bean>
+	
 </beans>
